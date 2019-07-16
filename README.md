@@ -1,7 +1,8 @@
 # Scheme-Py
-## A Simple Scheme Implementation in python With no extra libraries
 
-### TODO:
+A Simple Scheme Implementation in python With no extra libraries
+
+## TODO:
 -  Add more primitives
         - cons
         - cond
