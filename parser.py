@@ -26,7 +26,7 @@ def read_until(str_iter, matcher):
         char = next(str_iter)
     return (out, char)
 
-def tokenize(str_iter):
+def __tokenize__(str_iter):
     tokens = []
     try:
         char = next(str_iter)
@@ -60,13 +60,13 @@ def tokenize(str_iter):
     except StopIteration as si:
         return tokens
 
-def parse(token_iter):
+def __parse__(token_iter):
     ast = []
     try:
         kind, payload = next(token_iter)
         while True:
             if kind == '(':
-                ast.append(parse(token_iter))
+                ast.append(__parse__(token_iter))
             elif kind == ')':
                 return ast
             elif kind == 'IDENTIFIER':
@@ -82,3 +82,9 @@ def parse(token_iter):
             kind, payload = next(token_iter)
     except StopIteration as si:
         return ast
+
+def tokenize(program):
+    return __tokenize__(program.__iter__())
+
+def parse(tokens):
+    return __parse__(tokens.__iter__())

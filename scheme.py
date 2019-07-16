@@ -1,8 +1,8 @@
 import parser
 
 def run(program):
-    tokens = parser.tokenize(program.__iter__())
-    ast = parser.parse(tokens.__iter__())
+    tokens = parser.tokenize(program)
+    ast = parser.parse(tokens)
     final_val = None
     for expr in ast:
         final_val = scheme_eval(expr)
